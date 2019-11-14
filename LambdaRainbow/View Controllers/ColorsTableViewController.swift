@@ -10,6 +10,14 @@ import UIKit
 
 class ColorsTableViewController: UITableViewController {
 
+    var colors: [MyColor] = [MyColor(name: "Red", color: .red),
+                             MyColor(name: "Orange", color: .orange),
+                             MyColor(name: "Yellow", color: .yellow),
+                             MyColor(name: "Green", color: .green),
+                             MyColor(name: "Blue", color: .blue),
+                             MyColor(name: "Cyan", color: .cyan),
+                             MyColor(name: "Purple", color: .purple)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,14 +29,16 @@ class ColorsTableViewController: UITableViewController {
     // How many rows are in the tabel view
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return colors.count
     }
 
-    // what data is in the cell
+    // What data is in the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath)
 
-        cell.textLabel?.text = "Red"
+        let color = colors[indexPath.row]
+        
+        cell.textLabel?.text = color.name
         
         return cell
     }
